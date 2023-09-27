@@ -74,16 +74,16 @@ $ npm start
 $ npm install
 ```
 
-3. Run the server 
+3. Run the server - first mode - start
 
 ```
-$ npm start
+$ npm run start
 ```
 
-4. Development: You can run the server while detecting changes in the server side (the application will update)
+4. second mode - Development: You can run the server while detecting changes in the server side (the application will update)
 
 ```
-$ npm dev
+$ npm run dev
 ```
 
 More Info on connecting client-server -
