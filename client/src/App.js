@@ -21,6 +21,9 @@ function App() {
 	const [name, setName] = useState("");
 	const [languages, setLanguages] = useState([]);
 
+
+
+	
 	// for fonts
 	WebFont.load({
 		google: {
