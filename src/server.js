@@ -2,8 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const path = require("path");
-const { pool } = require("./db");
-const queries = require("./queries");
+
+const mentorRoutes =require("./routes/mentor");
 
 const app = express();
 const port = process.env.PORT || 5001;
@@ -16,27 +16,8 @@ app.use(cookieParser());
 // enables the server to serve the client app without running it
 app.use(express.static(path.join(__dirname, "../client/build")));
 
-const getAllMentors = (req, res) => {
-	pool.query(queries.getMentors, (error, results) => {
-		if (error) throw error;
-		res.status(200).json(results.rows);
-		console.log(results.rows);
-	});
-};
 
-const postNewMentor = (req, res) => {
-	const { name, languages } = req.body;
-	// Add mentor to DB
-	pool.query(queries.addMentor, [name, languages], (error, data) => {
-		if (error) {
-			throw error;
-		}
-		res.status(201).send("mentor has been created.");
-	});
-};
-
-app.get("/mentors", getAllMentors);
-app.post("/mentors", postNewMentor);
+app.use("/mentors",mentorRoutes);
 
 app.listen(port, () => {
 	console.log(`Server running on http://localhost:${port}`);
