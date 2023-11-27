@@ -65,7 +65,7 @@ function App() {
 		let filtered = [];
 		console.log("search vals: ", searchVal, selectedLanguage);
 		if (selectedLanguage) {
-            console.log(selectedLanguage);
+			console.log(selectedLanguage);
 			filtered = mentors.filter((mentor) =>
 				mentor.language.includes(selectedLanguage.value)
 			);
@@ -73,8 +73,8 @@ function App() {
 			filtered = mentors.filter((mentor) => mentor.name.includes(searchVal));
 		}
 		setFilteredMentors(filtered);
-        setSearchVal("");
-        clearSelection();
+		setSearchVal("");
+		clearSelection();
 	};
 
 	const handleSubmit = async (event) => {
@@ -104,6 +104,14 @@ function App() {
 		setTimeout(fetchMentors, 500);
 	}, [flagForRender]);
 
+	// return (
+	// 	<NewMentorForm
+	// 		handleSubmit={handleSubmit}
+	// 		setName={setName}
+	// 		setLanguages={setLanguages}
+	// 	/>
+	// );
+
 	return (
 		<div style={styles.container}>
 			<div style={{ ...styles.searchBox, ...styles.shadow }}>
@@ -111,7 +119,7 @@ function App() {
 					style={{ width: "187px" }}
 					id="newTask"
 					name="newTask"
-                    value={searchVal}
+					value={searchVal}
 					// form="newTaskForm"
 					type="text"
 					placeholder="Search mentor by name or role"

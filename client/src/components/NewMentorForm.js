@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Select from "react-select";
 
 import axios from "axios";
-import Checkbox from '@mui/material/Checkbox';
+import Checkbox from "@mui/material/Checkbox";
 function NewMentorForm(props) {
 	const { handleSubmit, setName, setLanguages } = props;
-    const [selectedLanguages, setSelectedLanguages] = useState([]);
+	const [selectedLanguages, setSelectedLanguages] = useState([]);
 
-    const language_options = [
+	const language_options = [
 		{ value: "Python", label: "Python" },
 		{ value: "Java", label: "Java" },
 		{ value: "C", label: "C" },
@@ -16,12 +16,17 @@ function NewMentorForm(props) {
 		{ value: "C++", label: "C++" },
 	];
 
-    const handleSelectChange = (selectedOption) => {
-        // if(selectedLanguages.includes(selectedOption)){
-        //     selectedLanguages.
-        // }
-		// setSelectedLanguages([...selectedLanguages, selectedOption]);
+	const handleSelectChange = (selectedOption) => {
+        setLanguages(selectedOption.map((obj) => obj.value));
+		console.log(
+			"selectedOption: ",
+			selectedOption.map((obj) => obj.value)
+		);
 	};
+
+	useEffect(() => {
+		console.log("selectedLanguages: ", selectedLanguages);
+	}, [selectedLanguages]);
 
 	return (
 		<div style={styles.container}>
@@ -50,14 +55,14 @@ function NewMentorForm(props) {
 						value="Add Mentor"
 						style={styles.button}
 					/>
-				<div>
-				<Select
-					options={language_options}
-					isMulti={true}
-					onChange={handleSelectChange}
-					value={selectedLanguages}
-				/>
-			</div>
+					<div>
+						<Select
+							options={language_options}
+							isMulti={true}
+							onChange={handleSelectChange}
+							// value={selectedLanguages}
+						/>
+					</div>
 				</div>
 			</form>
 		</div>
