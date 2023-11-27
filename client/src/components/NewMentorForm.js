@@ -1,8 +1,27 @@
 import React, { useState } from "react";
+import Select from "react-select";
+
 import axios from "axios";
 import Checkbox from '@mui/material/Checkbox';
 function NewMentorForm(props) {
 	const { handleSubmit, setName, setLanguages } = props;
+    const [selectedLanguages, setSelectedLanguages] = useState([]);
+
+    const language_options = [
+		{ value: "Python", label: "Python" },
+		{ value: "Java", label: "Java" },
+		{ value: "C", label: "C" },
+		{ value: "JavaScript", label: "JavaScript" },
+		{ value: "C#", label: "C#" },
+		{ value: "C++", label: "C++" },
+	];
+
+    const handleSelectChange = (selectedOption) => {
+        // if(selectedLanguages.includes(selectedOption)){
+        //     selectedLanguages.
+        // }
+		// setSelectedLanguages([...selectedLanguages, selectedOption]);
+	};
 
 	return (
 		<div style={styles.container}>
@@ -31,13 +50,14 @@ function NewMentorForm(props) {
 						value="Add Mentor"
 						style={styles.button}
 					/>
-					{/* <button type="submit" style={styles.button}>
-						Add task
-					</button> */}
-					{/* <Checkbox defaultChecked />
-					<Checkbox />
-					<Checkbox disabled />
-					<Checkbox disabled checked /> */}
+				<div>
+				<Select
+					options={language_options}
+					isMulti={true}
+					onChange={handleSelectChange}
+					value={selectedLanguages}
+				/>
+			</div>
 				</div>
 			</form>
 		</div>

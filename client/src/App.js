@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { ThemeProvider } from "@mui/material/styles";
-import theme from "./components/Theme";
+import Select from "react-select";
 import MentorCard from "./components/MentorCard";
 import MentorsList from "./components/MentorsList";
 import { IoIosSearch } from "react-icons/io";
@@ -20,6 +19,7 @@ function App() {
 	const [filteredMentors, setFilteredMentors] = useState([]);
 	const [name, setName] = useState("");
 	const [languages, setLanguages] = useState([]);
+	const [selectedLanguage, setSelectedLanguage] = useState(null);
 
 	// for fonts
 	WebFont.load({
@@ -27,6 +27,15 @@ function App() {
 			families: ["Droid Sans", "Chilanka"],
 		},
 	});
+
+	const language_options = [
+		{ value: "Python", label: "Python" },
+		{ value: "Java", label: "Java" },
+		{ value: "C", label: "C" },
+		{ value: "JavaScript", label: "JavaScript" },
+		{ value: "C#", label: "C#" },
+		{ value: "C++", label: "C++" },
+	];
 
 	const fetchMentors = async () => {
 		console.log("fetching mentors...:");
@@ -42,29 +51,30 @@ function App() {
 			console.log(error.message);
 		}
 	};
-	useEffect(() => {
-		setTimeout(fetchMentors, 500);
-		// axios
-		// 	.get(`http://localhost:${port}/api/helloworld`)
-		// 	.then((response) => setMessage(response.data))
-		// 	.catch((error) =>
-		// 		console.error(`There was an error retrieving the message: ${error}`)
-		// 	);
-	}, [flagForRender]);
+
+	const handleSelectChange = (selectedOption) => {
+		setSelectedLanguage(selectedOption);
+	};
+
+	const clearSelection = () => {
+		setSelectedLanguage(null); // Reset the selection to nothing
+	};
 
 	const searchHandler = async (searchVal) => {
 		const languages = ["C", "C#", "Java", "JavaScript", "Python"];
 		let filtered = [];
-		console.log(searchVal, languages);
-		if (languages.includes(searchVal)) {
-            console.log(mentors.at(0))
+		console.log("search vals: ", searchVal, selectedLanguage);
+		if (selectedLanguage) {
+            console.log(selectedLanguage);
 			filtered = mentors.filter((mentor) =>
-				mentor.language.includes(searchVal)
+				mentor.language.includes(selectedLanguage.value)
 			);
 		} else {
 			filtered = mentors.filter((mentor) => mentor.name.includes(searchVal));
 		}
 		setFilteredMentors(filtered);
+        setSearchVal("");
+        clearSelection();
 	};
 
 	const handleSubmit = async (event) => {
@@ -90,13 +100,9 @@ function App() {
 		}
 	};
 
-	// return (
-	// 		<NewMentorForm
-	// 			handleSubmit={handleSubmit}
-	// 			setName={setName}
-	// 			setLanguages={setLanguages}
-	// 		/>
-	// );
+	useEffect(() => {
+		setTimeout(fetchMentors, 500);
+	}, [flagForRender]);
 
 	return (
 		<div style={styles.container}>
@@ -105,6 +111,7 @@ function App() {
 					style={{ width: "187px" }}
 					id="newTask"
 					name="newTask"
+                    value={searchVal}
 					// form="newTaskForm"
 					type="text"
 					placeholder="Search mentor by name or role"
@@ -119,6 +126,14 @@ function App() {
 					}}
 				/>
 				{/* <Grid /> */}
+			</div>
+			<div>
+				<Select
+					options={language_options}
+					isMulti={false}
+					onChange={handleSelectChange}
+					value={selectedLanguage}
+				/>
 			</div>
 			<MentorsList filteredMentors={filteredMentors} />
 			{/* <img src={firstPerson} alt="person1" /> */}
