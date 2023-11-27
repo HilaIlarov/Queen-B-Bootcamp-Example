@@ -1,63 +1,34 @@
-const fs = require("fs");
 const express = require("express");
-const cors = require("cors");
-const path = require("path");
+const cookieParser = require("cookie-parser");
+const { pool } = require("./db");
+const queries = require("./queries");
+
 const app = express();
 const port = process.env.PORT || 5001;
 
-/*
-CORS (Cross-Origin Resource Sharing) is a browser security feature that restricts
-cross-origin HTTP requests with other servers and specifies which domains access your resources.
-We will use this Node.js package to allow cross-origin requests.
- */
-app.use(cors());
+/* This is going to allow us to post and get json from our endpoint */
 app.use(express.json());
-// enables the server to serve the client app without running it
-app.use(express.static(path.join(__dirname, "../client/build")));
+app.use(cookieParser());
 
-// app.get("/api/helloworld", (req, res) => {
-// 	res.send("Hello World");
-// });
-
-// app.get("/*", (req, res) => {
-// 	// res.send('Anything else');
-// 	res.sendFile(path.join(__dirname, "../client/build", "index.html"));
-// });
-
-const mentors = JSON.parse(fs.readFileSync(`${__dirname}/data/mentors.json`));
-console.log("mentors from outside: ", mentors);
 
 const getAllMentors = (req, res) => {
-	console.log("Getting all mentors");
-	console.log("mentors from getAllMentors is: ", mentors);
-	res.status(200).json({
-		status: "success",
-		results: mentors.length,
-		mentors,
-		data: {
-			mentors, //equals to tasks: tasks
-		},
-	});
+    pool.query(queries.getMentors, (error,results)=>{
+        if (error) throw error;
+        res.status(200).json(results.rows);
+    })
 };
 
 const postNewMentor = (req, res) => {
-	console.log("posting new mentor");
-	const { id, name, languages } = req.body;
-	const newMentorsList = [
-		...mentors,
-		{
-			"id": id,
-			"name": name,
-			"languages": languages,
-		},
-	];
-	fs.writeFile(
-		`${__dirname}/data/mentors.json`,
-		JSON.stringify(newMentorsList),
-		(err) => console.log("written to tasks.json successfully")
-	);
-	res.send("completed");
+	const {name, languages} = req.body;
+	// Add mentor to DB
+	pool.query(queries.addMentor, [name, languages], (error, data) => {
+		if (error) {
+			throw error;
+		}
+		res.status(201).send("mentor has been created.");
+	});
 };
+
 
 app.get("/mentors", getAllMentors);
 app.post("/mentors", postNewMentor);
