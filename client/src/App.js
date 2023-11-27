@@ -21,9 +21,6 @@ function App() {
 	const [name, setName] = useState("");
 	const [languages, setLanguages] = useState([]);
 
-
-
-	
 	// for fonts
 	WebFont.load({
 		google: {
@@ -36,8 +33,9 @@ function App() {
 		try {
 			console.log(`http://localhost:${port}/mentors`);
 			const response = await axios.get(`http://localhost:${port}/mentors`);
-			const data = response.data.data;
-			const mentors = data.mentors;
+			console.log(response.data);
+			// const data = response.data.data;
+			const mentors = response.data;
 			setMentors(mentors);
 			console.log("mentors are set");
 		} catch (error) {
@@ -57,9 +55,11 @@ function App() {
 	const searchHandler = async (searchVal) => {
 		const languages = ["C", "C#", "Java", "JavaScript", "Python"];
 		let filtered = [];
+		console.log(searchVal, languages);
 		if (languages.includes(searchVal)) {
+            console.log(mentors.at(0))
 			filtered = mentors.filter((mentor) =>
-				mentor.languages.includes(searchVal)
+				mentor.language.includes(searchVal)
 			);
 		} else {
 			filtered = mentors.filter((mentor) => mentor.name.includes(searchVal));
