@@ -4,15 +4,17 @@ import genericPerson from "../assets/genericProfilePictureEdited.jpg";
 
 function MentorCard(props) {
 	const { mentor, personImg } = props;
-	const { id, name, language } = mentor;
+	const { id, name, languages } = mentor;
 	console.log("mentor name: ", name);
 	return (
 		<div style={{...styles.container, ...styles.shadow}}>
 			<div>
-				<img src={genericPerson} style={styles.personImg} />
+				<a className="link" href={`/${mentor.id}`}>
+					<img src={genericPerson} style={styles.personImg} />
+				</a>
 			</div>
 			<div>{name}</div>
-			<div>{language.join(", ")}</div>
+			<div>{languages.join(", ")}</div>
 		</div>
 	);
 }

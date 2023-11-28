@@ -51,7 +51,6 @@ const Register = () => {
             setError(err.response.data);
         }
     };
-    
     return (
         <div className="auth">
             <h1>Register</h1>

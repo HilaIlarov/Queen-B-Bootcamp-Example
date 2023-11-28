@@ -67,7 +67,7 @@ const Home = () => {
 		if (selectedLanguage) {
             console.log(selectedLanguage);
 			filtered = mentors.filter((mentor) =>
-				mentor.language.includes(selectedLanguage.value)
+				mentor.languages.includes(selectedLanguage.value)
 			);
 		} else {
 			filtered = mentors.filter((mentor) => mentor.name.includes(searchVal));

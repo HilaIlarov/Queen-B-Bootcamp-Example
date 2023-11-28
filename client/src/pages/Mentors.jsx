@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Logo from "../images/QueenB.png";
+import Home from "./Home";
+
 
 const Mentors = () => {
     const [mentors, setMentors] = useState([])
@@ -8,7 +11,7 @@ const Mentors = () => {
     useEffect(() => {
         const fetchData = async ()=>{
             try{
-                const res = await axios.get("/mentors");
+                const res = await axios.get("http://localhost:5001/mentors");
                 setMentors(res.data);
             }catch (err){
                 console.log(err);
@@ -22,23 +25,7 @@ const Mentors = () => {
     }
 
     return (
-        <div className="Mentors">
-            <div className="members">
-                {mentors.map((mentor) => (
-                    <div className="member" key={mentor.mentor_id}>
-                        <div className="img">
-                            <Link className="link" to={`/${mentor.mentor_id}`}>
-                                <img src={`${mentor.img}`} alt="" />
-                            </Link>
-                        </div>
-                        <div className="content">
-                            <p>{getText(mentor.first_name)} {getText(mentor.last_name)}</p>
-                            <p>{getText(mentor.profession)}</p>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </div>
+        <Home/>
     );
 };
 
