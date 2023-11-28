@@ -9,7 +9,6 @@ function MentorCard(props) {
 	console.log("mentor name: ", name);
 	return (
 		<div
-			onClick={handleClick}
 			style={{ ...styles.container, ...styles.shadow }}
 		>
 			<div>

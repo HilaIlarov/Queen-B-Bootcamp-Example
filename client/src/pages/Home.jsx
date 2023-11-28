@@ -107,8 +107,7 @@ const Home = () => {
 
     return (
         <div style={styles.container}>
-            <Mentor></Mentor>
-			{/* <div style={{ ...styles.searchBox, ...styles.shadow }}>
+			<div style={{ ...styles.searchBox, ...styles.shadow }}>
 				<input
 					style={{ width: "187px" }}
 					id="newTask"
@@ -136,7 +135,7 @@ const Home = () => {
 					value={selectedLanguage}
 				/>
 			</div>
-			<MentorsList filteredMentors={filteredMentors} /> */}
+			<MentorsList filteredMentors={filteredMentors} />
 			{/* <img src={firstPerson} alt="person1" /> */}
 		</div>
     );

@@ -1,28 +1,27 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
-import DOMPurify from "dompurify";
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 
-const Mentor = (props) => {
+const Mentor = () => {
 	const [mentor, setMentor] = useState({});
-    // const mentor = {props}
 	const location = useLocation();
 	
     const mentorId = location.pathname.split("/")[1];
-	console.log("hey?   ############");
 
 	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const res = await axios.get(`/mentors/${mentorId}`);
-				setMentor(res.data);
-			} catch (err) {
-				console.log(err);
-			}
-		};
-		fetchData();
-	}, [mentorId]);
+        const fetchData = async () => {
+           try {
+              const res = await axios.get(`http://localhost:5001/mentors/${mentorId}`);
+              console.log('Response from server:', res);
+              console.log('Mentor data:', res.data);  // Log the actual data
+              setMentor(res.data);
+           } catch (err) {
+              console.log('Error fetching data:', err);
+           }
+        };
+        fetchData();
+     }, [mentorId]);
 
 	const getText = (html) => {
 		const doc = new DOMParser().parseFromString(html, "text/html");
@@ -30,10 +29,7 @@ const Mentor = (props) => {
 	};
 
 	return (
-		<div
-			className="Mentor"
-			// style={styles.container}
-		>
+		<div className="Mentor">
 			<Card sx={useStyles.root}>
 				{/* <CardMedia
 					sx={useStyles.media}
@@ -43,11 +39,12 @@ const Mentor = (props) => {
 				<CardContent>
 					{/* <img src={`${mentor.img}`} alt="" /> */}
 					<Typography gutterBottom variant="h5" component="h2">
-						mentor.name
 						{mentor.name}
 					</Typography>
+                    <Typography gutterBottom variant="h6" component="h2">
+						{mentor.languages}
+					</Typography>
 					<Typography variant="body2" color="textSecondary" component="p">
-						mentor.profession
 						{mentor.profession}
 					</Typography>
 
@@ -56,9 +53,7 @@ const Mentor = (props) => {
 						color="textSecondary"
 						component="p"
 						sx={useStyles.description}
-					>
-						mentor.description
-						nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+					>						
 						{mentor.description}
 					</Typography>
 					<Typography
@@ -68,7 +63,7 @@ const Mentor = (props) => {
 						sx={useStyles.media}
 					>
 						<a
-							href={mentor.instagram}
+							href={mentor.phone}
 							target="_blank"
 							rel="noopener noreferrer"
 						>
