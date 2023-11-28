@@ -2,6 +2,7 @@ const { pool } = require("../db");
 const queries = require("../queries");
 
 const getAllMentors = (req, res) => {
+	console.log("getAllMentors");
     pool.query(queries.getMentors, (error,results)=>{
         if (error) throw error;
         res.status(200).json(results.rows);
@@ -19,7 +20,16 @@ const postNewMentor = (req, res) => {
 	});
 };
 
+const getMentor = (req, res) => {
+    const id = req.params.id;
+    pool.query(queries.checkMentorId,[id], (error,results)=>{
+        if (error) throw error;
+        res.status(200).json(results.rows[0]);
+    })
+};
+
 module.exports = {
     getAllMentors,
     postNewMentor,
+	getMentor,
 }
