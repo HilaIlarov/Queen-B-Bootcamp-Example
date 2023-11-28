@@ -33,7 +33,7 @@ const styles = {
 		height: "90%",
 		width: "90%",
 		overflow: "auto",
-		marginTop: "10%",
+		marginTop: "3%",
 		display: "flex",
 		alignItems: "center",
 		// justifyContent: "center",
