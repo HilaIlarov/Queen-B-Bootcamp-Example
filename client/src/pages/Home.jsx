@@ -9,6 +9,7 @@ import { IconButton } from "@mui/material";
 import firstPerson from "../images/person1.svg";
 import { Grid } from "@mui/material";
 import NewMentorForm from "../components/NewMentorForm";
+import Mentor from "./Mentor";
 const port = process.env.PORT || 5001;
 
 const Home = () => {
@@ -106,7 +107,8 @@ const Home = () => {
 
     return (
         <div style={styles.container}>
-			<div style={{ ...styles.searchBox, ...styles.shadow }}>
+            <Mentor></Mentor>
+			{/* <div style={{ ...styles.searchBox, ...styles.shadow }}>
 				<input
 					style={{ width: "187px" }}
 					id="newTask"
@@ -125,7 +127,6 @@ const Home = () => {
 						searchHandler(searchVal);
 					}}
 				/>
-				{/* <Grid /> */}
 			</div>
 			<div>
 				<Select
@@ -135,7 +136,7 @@ const Home = () => {
 					value={selectedLanguage}
 				/>
 			</div>
-			<MentorsList filteredMentors={filteredMentors} />
+			<MentorsList filteredMentors={filteredMentors} /> */}
 			{/* <img src={firstPerson} alt="person1" /> */}
 		</div>
     );
