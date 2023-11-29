@@ -55,6 +55,13 @@ const Register = () => {
 		e.preventDefault();
 		try {
 			console.log("Submitting:", inputs);
+			// Check if all required fields are filled
+            for (const field of ["name", "email", "password", "languages", "description", "phone", "linkedin"]) {
+                if (!inputs[field]) {
+                    setError(`Please fill in the ${field} field.`);
+                    return; // Do not proceed with submission
+                }
+            }
 
 			/* handle api req */
 			await axios.post("http://localhost:5001/auth/register", inputs);
@@ -75,6 +82,7 @@ const Register = () => {
 					name="name"
 					onChange={handleChange}
 				/>
+				
 				<input
 					required
 					type="email"
@@ -101,27 +109,27 @@ const Register = () => {
 				</div>
 				<input
 					required
-					type="description"
+					type="text"
 					placeholder="description"
 					name="description"
 					onChange={handleChange}
 				/>
 				<input
 					required
-					type="phone"
-					placeholder="phone"
+					type="text"
+					placeholder="phone number"
 					name="phone"
 					onChange={handleChange}
 				/>
 				<input
 					required
-					type="linkedin"
-					placeholder="linkedin"
+					type="text"
+					placeholder="LinkedIn profile URL"
 					name="linkedin"
 					onChange={handleChange}
 				/>
 
-				<button onClick={handleSubmit}>Register</button>
+				<button type="submit" onClick={handleSubmit}>Register</button>
 				{err && <p>Oops! - {err} </p>}
 				<span>
 					do you have an account? <Link to="/login">Login</Link>
