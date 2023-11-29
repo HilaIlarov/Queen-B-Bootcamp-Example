@@ -13,7 +13,7 @@ const pool = new Pool({
     host: "localhost",
     database: "queenb",
     password: "database",
-    port: 5433,
+    port: 5432,
 });
 
 module.exports = { pool };
