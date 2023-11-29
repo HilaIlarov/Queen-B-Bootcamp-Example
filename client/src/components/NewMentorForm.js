@@ -71,14 +71,14 @@ function NewMentorForm(props) {
 
 const styles = {
 	container: {
-		backgroundColor: "#F4C2C2",
+		// backgroundColor: "blue",
 		position: "fixed", // important for the background color to be over ALL the page
 		// center the div vertically
 		display: "flex",
 		flexDirection: "column",
 		// justifyContent: "space-around",
 		alignItems: "center",
-		height: "100%",
+		// height: "100%",
 		width: "100%",
 		fontFamily: "Chilanka",
 	},
