@@ -7,8 +7,8 @@ import genericPerson from "../assets/genericProfilePictureEdited.jpg";
 const Mentor = () => {
 	const [mentor, setMentor] = useState({});
 	const location = useLocation();
-	
-    const mentorId = location.pathname.split("/")[1];
+
+	const mentorId = location.pathname.split("/")[1];
 
 	useEffect(() => {
         const fetchData = async () => {
@@ -41,30 +41,49 @@ const Mentor = () => {
 			<Card sx={useStyles.root}>
 				<CardContent>
 					{<img src={genericPerson} style={styles.personImg} />}
-					<Typography gutterBottom variant="h5" component="h2" sx={useStyles.main} style={{fontSize: '17'}}>
+					<Typography
+						gutterBottom
+						variant="h5"
+						component="h2"
+						sx={useStyles.main}
+						style={{ fontSize: "17" }}
+					>
 						{mentor.name}
 					</Typography>
-                    <Typography gutterBottom variant="h6" component="h2" style={{ textAlign: 'left' }}>
-						{mentor.languages && mentor.languages.join(' ')}
-					</Typography>
-					
-					<Typography gutterBottom variant="h6" 
-					component="h2" 
-					sx={useStyles.main}
+					<Typography
+						gutterBottom
+						variant="h6"
+						component="h2"
+						style={{ textAlign: "left" }}
 					>
-						about our queen {mentor.name} 
+						{mentor.languages?.join(", ")}
+					</Typography>
+
+					<Typography
+						gutterBottom
+						variant="h6"
+						component="h2"
+						sx={useStyles.main}
+					>
+						about our queen {mentor.name}
 					</Typography>
 
 					<Typography
 						variant="h6"
 						color="textSecondary"
 						component="h6"
-						sx={useStyles.description} style={{ textAlign: 'left' }}
-					>						
+						sx={useStyles.description}
+						style={{ textAlign: "left" }}
+					>
 						{mentor.description}
 					</Typography>
 
-					<Typography gutterBottom variant="h6" component="h2" sx={useStyles.main}>
+					<Typography
+						gutterBottom
+						variant="h6"
+						component="h2"
+						sx={useStyles.main}
+					>
 						contact {mentor.name}
 					</Typography>
 
@@ -116,26 +135,26 @@ const useStyles = {
 		justifyContent: "center",
 		alignItems: "center",
 		height: "90vh",
-	  },
+	},
 	root: {
 		width: 435,
 		height: 800,
 		margin: 10,
 	},
-	main:{
-		fontWeight: 'bold' , 
-		textAlign: 'left',
-		fontFamily: 'Raleway', // Add the desired font family
-    	fontSize: '14', // Add the desired font size
+	main: {
+		fontWeight: "bold",
+		textAlign: "left",
+		fontFamily: "Raleway", // Add the desired font family
+		fontSize: "14", // Add the desired font size
 	},
 	description: {
 		height: 100, // Fixed height for the description
 		overflowY: "scroll",
 		textOverflow: "ellipsis",
-        margin: 5,
+		margin: 5,
 		WebkitLineClamp: 5, // Maximum lines to display
-		fontFamily: 'Raleway', // Add the desired font family
-    	fontSize: '12', // Add the desired font size
+		fontFamily: "Raleway", // Add the desired font family
+		fontSize: "12", // Add the desired font size
 	},
 	media: {
 		// position: "fixed",
@@ -144,7 +163,7 @@ const useStyles = {
 		flexDirection: "row",
 		// marginTop: "80%",
 		// width: "20px",
-        margin: 10,
+		margin: 10,
 		height: "40px",
 		justifyContent: "space-around",
 		// alignItems: "center",
