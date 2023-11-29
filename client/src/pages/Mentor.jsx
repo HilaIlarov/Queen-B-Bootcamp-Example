@@ -24,6 +24,17 @@ const Mentor = () => {
         fetchData();
      }, [mentorId]);
 
+	const openWhatsApp = () => {
+		window.open(`https://wa.me/+972${mentor.phone}`);
+	};
+
+	const openEmail = () => {
+		const subject = 'A message from QueenB member'; // Replace with the desired subject
+		const body = 'Hello, \n\nI hope this email finds you well :).'; // Replace with the desired body
+	
+		const mailtoLink = `mailto:${mentor.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+		window.location.href = mailtoLink;
+	  };
 
 	return (
 		<div style={useStyles.container}>
@@ -34,7 +45,7 @@ const Mentor = () => {
 						{mentor.name}
 					</Typography>
                     <Typography gutterBottom variant="h6" component="h2" style={{ textAlign: 'left' }}>
-						{mentor.languages}
+						{mentor.languages && mentor.languages.join(' ')}
 					</Typography>
 					
 					<Typography gutterBottom variant="h6" 
@@ -63,28 +74,33 @@ const Mentor = () => {
 						component="div"
 						sx={useStyles.media}
 					>
-						<a
-							href={mentor.phone}
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<img
+						<a 
+							href="#" onClick={openWhatsApp}>
+        					<img
 								src="https://www.pngkit.com/png/full/1-13187_instagram-logo-new-vector-eps-free-download-logo.png"
-								alt="Instagram"
+								alt="WhatsApp Icon"
 								style={{ width: "30px", height: "30px" }} // Adjust the image size as needed
 							/>
-						</a>
+      					</a>
+
 						<a
-							href={mentor.linkedin}
-							target="_blank"
-							rel="noopener noreferrer"
-						>
+							href={mentor.linkedin}>
 							<img
 								src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/640px-LinkedIn_logo_initials.png"
 								alt="Linkedin"
 								style={{ width: "30px", height: "30px" }} // Adjust the image size as needed
 							/>
 						</a>
+
+						<a
+							href="#" onClick={openEmail}>
+							<img
+								src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/640px-LinkedIn_logo_initials.png"
+								alt="email"
+								style={{ width: "30px", height: "30px" }} // Adjust the image size as needed
+							/>
+						</a>
+
 					</Typography>
 				</CardContent>
 				{/* <div className="content"> */}
@@ -103,7 +119,7 @@ const useStyles = {
 	  },
 	root: {
 		width: 435,
-		height: 700,
+		height: 800,
 		margin: 10,
 	},
 	main:{

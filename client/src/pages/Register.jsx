@@ -43,6 +43,13 @@ const Register = () => {
         e.preventDefault();
         try {
             console.log("Submitting:", inputs);
+             // Check if all required fields are filled
+            for (const field of ["name", "email", "password", "languages", "description", "phone", "linkedin"]) {
+                if (!inputs[field]) {
+                    setError(`Please fill in the ${field} field.`);
+                    return; // Do not proceed with submission
+                }
+            }
 
             /* handel api req */
             await axios.post("http://localhost:5001/auth/register", inputs);
@@ -60,12 +67,12 @@ const Register = () => {
                 <input required type="email" placeholder="email" name="email" onChange={ handleChange }/>
                 <input required type="password" placeholder="password" name="password" onChange={ handleChange }/>
                 <p>Note: Enter programming languages separated by commas (e.g., Java,Python).</p>
-                <input required type="languages" placeholder="programming languages" name="languages" onChange={ handleChange }/>
-                <input required type="description" placeholder="description" name="description" onChange={ handleChange }/>
-                <input required type="phone" placeholder="phone" name="phone" onChange={ handleChange }/>
-                <input required type="linkedin" placeholder="linkedin" name="linkedin" onChange={ handleChange }/>
+                <input required type="text" placeholder="programming languages" name="languages" onChange={ handleChange }/>
+                <input required type="text" placeholder="description" name="description" onChange={ handleChange }/>
+                <input required type="text" placeholder="phone number" name="phone" onChange={ handleChange }/>
+                <input required type="text" placeholder="LinkedIn profile URL" name="linkedin" onChange={ handleChange }/>
 
-                <button onClick={ handleSubmit }>Register</button>
+                <button type="submit" onClick={ handleSubmit }>Register</button>
                 {err && <p>Oops! - {err} </p>}
                 <span>do you have an account? <Link to="/login">Login</Link></span>
             </form>
