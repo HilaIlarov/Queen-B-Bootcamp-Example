@@ -143,8 +143,10 @@ const Home = () => {
 
 const styles = {
 	container: {
+		overflow: "auto", /* This allows scrolling */
+		// overflowY: 'scroll',
 		backgroundColor: "#FABEBD",
-		position: "fixed", // important for the background color to be over ALL the page
+		//position: "fixed", // important for the background color to be over ALL the page
 		// center the div vertically
 		display: "flex",
 		flexDirection: "column",
@@ -152,6 +154,7 @@ const styles = {
 		height: "100%",
 		width: "100%",
 		fontFamily: "Chilanka",
+		margin: "0",
 	},
 	searchBox: {
 		// backgroundColor: "blue",

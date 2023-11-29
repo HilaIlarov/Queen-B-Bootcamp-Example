@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
-import { Card, CardContent, CardMedia, Typography } from "@mui/material";
+import { Card, CardContent, Typography } from "@mui/material";
+import genericPerson from "../assets/genericProfilePictureEdited.jpg";
 
 const Mentor = () => {
 	const [mentor, setMentor] = useState({});
@@ -23,39 +24,39 @@ const Mentor = () => {
         fetchData();
      }, [mentorId]);
 
-	const getText = (html) => {
-		const doc = new DOMParser().parseFromString(html, "text/html");
-		return doc.body.textContent;
-	};
 
 	return (
-		<div className="Mentor">
+		<div style={useStyles.container}>
 			<Card sx={useStyles.root}>
-				{/* <CardMedia
-					sx={useStyles.media}
-					image={mentor.image}
-					title={mentor.name}
-				/> */}
 				<CardContent>
-					{/* <img src={`${mentor.img}`} alt="" /> */}
-					<Typography gutterBottom variant="h5" component="h2">
+					{<img src={genericPerson} style={styles.personImg} />}
+					<Typography gutterBottom variant="h5" component="h2" sx={useStyles.main} style={{fontSize: '17'}}>
 						{mentor.name}
 					</Typography>
-                    <Typography gutterBottom variant="h6" component="h2">
+                    <Typography gutterBottom variant="h6" component="h2" style={{ textAlign: 'left' }}>
 						{mentor.languages}
 					</Typography>
-					<Typography variant="body2" color="textSecondary" component="p">
-						{mentor.profession}
+					
+					<Typography gutterBottom variant="h6" 
+					component="h2" 
+					sx={useStyles.main}
+					>
+						about our queen {mentor.name} 
 					</Typography>
 
 					<Typography
-						variant="body2"
+						variant="h6"
 						color="textSecondary"
-						component="p"
-						sx={useStyles.description}
+						component="h6"
+						sx={useStyles.description} style={{ textAlign: 'left' }}
 					>						
 						{mentor.description}
 					</Typography>
+
+					<Typography gutterBottom variant="h6" component="h2" sx={useStyles.main}>
+						contact {mentor.name}
+					</Typography>
+
 					<Typography
 						variant="body2"
 						color="textSecondary"
@@ -94,20 +95,31 @@ const Mentor = () => {
 };
 
 const useStyles = {
+	container: {
+		display: "flex",
+		justifyContent: "center",
+		alignItems: "center",
+		height: "90vh",
+	  },
 	root: {
-		width: 345,
-		height: 345,
+		width: 435,
+		height: 700,
 		margin: 10,
 	},
-	
+	main:{
+		fontWeight: 'bold' , 
+		textAlign: 'left',
+		fontFamily: 'Raleway', // Add the desired font family
+    	fontSize: '14', // Add the desired font size
+	},
 	description: {
 		height: 100, // Fixed height for the description
 		overflowY: "scroll",
 		textOverflow: "ellipsis",
         margin: 5,
-		// display: "-webkit-box",
 		WebkitLineClamp: 5, // Maximum lines to display
-		// WebkitBoxOrient: "vertical",
+		fontFamily: 'Raleway', // Add the desired font family
+    	fontSize: '12', // Add the desired font size
 	},
 	media: {
 		// position: "fixed",
@@ -132,8 +144,6 @@ const styles = {
 		width: "40%",
 		height: "80%",
 		marginTop: "5%",
-		// alignItems: "center",
-		// justifyContent: "center",
 	},
 	description: {
 		position: "fixed",
