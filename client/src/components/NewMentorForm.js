@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
 import Select from "react-select";
-
+import language_options from "./languages";
 import axios from "axios";
 import Checkbox from "@mui/material/Checkbox";
 function NewMentorForm(props) {
 	const { handleSubmit, setName, setLanguages } = props;
 	const [selectedLanguages, setSelectedLanguages] = useState([]);
 
-	const language_options = [
-		{ value: "Python", label: "Python" },
-		{ value: "Java", label: "Java" },
-		{ value: "C", label: "C" },
-		{ value: "JavaScript", label: "JavaScript" },
-		{ value: "C#", label: "C#" },
-		{ value: "C++", label: "C++" },
-	];
+	// const language_options = [
+	// 	{ value: "Python", label: "Python" },
+	// 	{ value: "Java", label: "Java" },
+	// 	{ value: "C", label: "C" },
+	// 	{ value: "JavaScript", label: "JavaScript" },
+	// 	{ value: "C#", label: "C#" },
+	// 	{ value: "C++", label: "C++" },
+	// ];
 
 	const handleSelectChange = (selectedOption) => {
         setLanguages(selectedOption.map((obj) => obj.value));

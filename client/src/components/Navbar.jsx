@@ -20,7 +20,12 @@ const Navbar = () => {
                     <Link ClassName="link" to="/mentors">
                         <h6>Mentors</h6>
                     </Link>
-                    <span>{currentUser?.name}</span>
+                    {currentUser ? (
+                    <a className="link" href={`/${currentUser.id}`}>
+                        <span>{currentUser?.name}</span>
+                        </a>) : (
+                        <span>{currentUser?.name}</span>
+                        )}
                     {currentUser ? (<span onClick={logout}>Logout</span>) : (<Link className="link" to="/login">Login</Link>)}
                 </div>
             </div>

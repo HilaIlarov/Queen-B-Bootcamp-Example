@@ -2,9 +2,10 @@ const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const path = require("path");
+// const { createProxyMiddleware } = require("http-proxy-middleware");
 
-const mentorRoutes =require("./routes/mentor.js");
-const authRoutes =require("./routes/auth.js");
+const mentorRoutes = require("./routes/mentor.js");
+const authRoutes = require("./routes/auth.js");
 
 const app = express();
 const port = process.env.PORT || 5001;
@@ -17,10 +18,15 @@ app.use(cookieParser());
 // enables the server to serve the client app without running it
 app.use(express.static(path.join(__dirname, "../client/build")));
 
-
 app.use("/mentors", mentorRoutes);
 app.use("/auth", authRoutes);
-
+// app.use(
+// 	"/",
+// 	createProxyMiddleware({
+// 		target: "http://localhost:5001",
+// 		changeOrigin: true,
+// 	})
+// );
 app.listen(port, () => {
 	console.log(`Server running on http://localhost:${port}`);
 });
