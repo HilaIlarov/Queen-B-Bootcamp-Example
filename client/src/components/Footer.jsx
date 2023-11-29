@@ -7,9 +7,9 @@ import "./components.scss";
 const Footer = () => {
 	return (
 		<footer>
-			<Link to="/">
+			{/* <Link to="/">
     			<img src={Logo} alt=""/>
-			</Link>
+			</Link> */}
 		</footer>
 	);
 };

@@ -11,30 +11,34 @@ const Mentor = () => {
 	const mentorId = location.pathname.split("/")[1];
 
 	useEffect(() => {
-        const fetchData = async () => {
-           try {
-              const res = await axios.get(`http://localhost:5001/mentors/${mentorId}`);
-              console.log('Response from server:', res);
-              console.log('Mentor data:', res.data);  // Log the actual data
-              setMentor(res.data);
-           } catch (err) {
-              console.log('Error fetching data:', err);
-           }
-        };
-        fetchData();
-     }, [mentorId]);
+		const fetchData = async () => {
+			try {
+				const res = await axios.get(
+					`http://localhost:5001/mentors/${mentorId}`
+				);
+				console.log("Response from server:", res);
+				console.log("Mentor data:", res.data); // Log the actual data
+				setMentor(res.data);
+			} catch (err) {
+				console.log("Error fetching data:", err);
+			}
+		};
+		fetchData();
+	}, [mentorId]);
 
 	const openWhatsApp = () => {
 		window.open(`https://wa.me/+972${mentor.phone}`);
 	};
 
 	const openEmail = () => {
-		const subject = 'A message from QueenB member'; // Replace with the desired subject
-		const body = 'Hello, \n\nI hope this email finds you well :).'; // Replace with the desired body
-	
-		const mailtoLink = `mailto:${mentor.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+		const subject = "A message from QueenB member"; // Replace with the desired subject
+		const body = "Hello, \n\nI hope this email finds you well :)."; // Replace with the desired body
+
+		const mailtoLink = `mailto:${mentor.email}?subject=${encodeURIComponent(
+			subject
+		)}&body=${encodeURIComponent(body)}`;
 		window.location.href = mailtoLink;
-	  };
+	};
 
 	return (
 		<div style={useStyles.container}>
@@ -93,17 +97,15 @@ const Mentor = () => {
 						component="div"
 						sx={useStyles.media}
 					>
-						<a 
-							href="#" onClick={openWhatsApp}>
-        					<img
+						<a href="#" onClick={openWhatsApp}>
+							<img
 								src="https://www.pngkit.com/png/full/1-13187_instagram-logo-new-vector-eps-free-download-logo.png"
 								alt="WhatsApp Icon"
 								style={{ width: "30px", height: "30px" }} // Adjust the image size as needed
 							/>
-      					</a>
+						</a>
 
-						<a
-							href={mentor.linkedin}>
+						<a href={mentor.linkedin}>
 							<img
 								src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/640px-LinkedIn_logo_initials.png"
 								alt="Linkedin"
@@ -111,15 +113,13 @@ const Mentor = () => {
 							/>
 						</a>
 
-						<a
-							href="#" onClick={openEmail}>
+						<a href="#" onClick={openEmail}>
 							<img
 								src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/640px-LinkedIn_logo_initials.png"
 								alt="email"
 								style={{ width: "30px", height: "30px" }} // Adjust the image size as needed
 							/>
 						</a>
-
 					</Typography>
 				</CardContent>
 				{/* <div className="content"> */}
@@ -134,11 +134,17 @@ const useStyles = {
 		display: "flex",
 		justifyContent: "center",
 		alignItems: "center",
-		height: "90vh",
+		width: "90%",
+		maxWidth: "800px", // Adjust the maximum width as needed
+		margin: "0 auto", // Center the container
+		// height: "90%",
+		backgroundColor: "#fabebd",
 	},
 	root: {
-		width: 435,
-		height: 800,
+		// width: 435,
+		// height: 800,
+		width: "60%",
+		height: "60%",
 		margin: 10,
 	},
 	main: {

@@ -145,7 +145,8 @@ const styles = {
 	container: {
 		overflow: "auto", /* This allows scrolling */
 		// overflowY: 'scroll',
-		backgroundColor: "#FABEBD",
+		// backgroundColor: "#FABEBD",
+        backgroundColor:"blue",
 		//position: "fixed", // important for the background color to be over ALL the page
 		// center the div vertically
 		display: "flex",
