@@ -2,6 +2,7 @@ import React from 'react';
 import {useState} from 'react';
 import { Link , useNavigate } from "react-router-dom";
 import axios from "axios";
+import "./auth.css";
 
 const Register = () => {
     const [inputs, setInputs] = useState({
@@ -58,7 +59,8 @@ const Register = () => {
                 <input required type="text" placeholder="name" name="name" onChange={ handleChange }/>
                 <input required type="email" placeholder="email" name="email" onChange={ handleChange }/>
                 <input required type="password" placeholder="password" name="password" onChange={ handleChange }/>
-                <input required type="languages" placeholder="languages" name="languages" onChange={ handleChange }/>
+                <p>Note: Enter programming languages separated by commas (e.g., Java,Python).</p>
+                <input required type="languages" placeholder="programming languages" name="languages" onChange={ handleChange }/>
                 <input required type="description" placeholder="description" name="description" onChange={ handleChange }/>
                 <input required type="phone" placeholder="phone" name="phone" onChange={ handleChange }/>
                 <input required type="linkedin" placeholder="linkedin" name="linkedin" onChange={ handleChange }/>

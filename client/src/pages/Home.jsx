@@ -143,7 +143,7 @@ const Home = () => {
 
 const styles = {
 	container: {
-		backgroundColor: "#F4C2C2",
+		backgroundColor: "#FABEBD",
 		position: "fixed", // important for the background color to be over ALL the page
 		// center the div vertically
 		display: "flex",
