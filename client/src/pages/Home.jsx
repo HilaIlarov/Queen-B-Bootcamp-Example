@@ -48,6 +48,7 @@ const Home = () => {
 			const mentors = response.data;
 			setMentors(mentors);
 			console.log("mentors are set");
+			setFilteredMentors(mentors);
 		} catch (error) {
 			console.log(error.message);
 		}
