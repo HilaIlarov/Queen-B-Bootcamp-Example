@@ -9,18 +9,10 @@ const { Pool } = require("pg");
  * 5. Update the 'password' field below with the password you set for the 'postgres' user or your PostgreSQL user.
  */
 const pool = new Pool({
-<<<<<<< HEAD
     user: "postgres",
     host: "localhost",
     database: "queenb",
     password: "database",
     port: 5432,
-=======
-	user: "postgres",
-	host: "localhost",
-	database: "queenb",
-	password: "hilailarov50",
-	port: 5432,
->>>>>>> 8db623b66335d3aba88cc821e509bc514f32ce3d
 });
 module.exports = { pool };
