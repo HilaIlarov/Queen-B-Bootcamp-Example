@@ -2,10 +2,17 @@ import React from "react";
 import firstPerson from "../images/person1.svg";
 import genericPerson from "../assets/genericProfilePictureEdited.jpg";
 import { useHistory } from "react-router-dom";
+import WebFont from "webfontloader";
 
 function MentorCard(props) {
 	const { mentor, personImg } = props;
 	const { id, name, languages } = mentor;
+	// for fonts
+	WebFont.load({
+		google: {
+			families: ["Droid Sans", "Chilanka"],
+		},
+	});
 	console.log("mentor name: ", name);
 	return (
 		<div style={{ ...styles.container, ...styles.shadow }}>
@@ -22,6 +29,7 @@ function MentorCard(props) {
 
 const styles = {
 	container: {
+		fontFamily: "Chilanka",
 		backgroundColor: "white",
 		// center the div vertically
 		display: "flex",

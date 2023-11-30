@@ -32,7 +32,7 @@ const styles = {
 		height: "100%",
 		width: "70%",
 		// overflow: "auto",
-		marginLeft: "10%",
+		marginLeft: "20%",
 		marginTop: "15%",
 		marginBottom: "5%",
 		display: "flex",
