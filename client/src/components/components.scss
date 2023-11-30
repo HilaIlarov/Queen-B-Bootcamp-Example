@@ -1,9 +1,9 @@
 $lightPurple: #fabebd;
 
 .navbar {
-	background-color: #fabebd;
+	background-color: $lightPurple;
 	.container {
-		padding: 10px 0px;
+		padding: 5px 0px;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -44,7 +44,7 @@ footer {
 	padding: 10px;
 	text-align: center;
 
-	background-color: red;
+	background-color: $lightPurple;
 	img {
 		height: 70px;
 		display: block;

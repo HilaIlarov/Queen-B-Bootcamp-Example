@@ -134,8 +134,8 @@ const useStyles = {
 		display: "flex",
 		justifyContent: "center",
 		alignItems: "center",
-		width: "90%",
-		maxWidth: "800px", // Adjust the maximum width as needed
+		width: "100%",
+		// maxWidth: "800px", // Adjust the maximum width as needed
 		margin: "0 auto", // Center the container
 		// height: "90%",
 		backgroundColor: "#fabebd",
@@ -178,7 +178,7 @@ const useStyles = {
 
 const styles = {
 	container: {
-		backgroundColor: "white",
+		backgroundColor: "blue",
 		display: "flex",
 		flexDirection: "column",
 		position: "fixed",
@@ -198,6 +198,8 @@ const styles = {
 		// display: "flex",
 		alignItems: "center", // Aligns content horizontally
 		justifyContent: "center", // Aligns content vertically
+        boxShadow:
+			"0px 0px 8px 8px rgba(0, 0, 0, 0.3)" /* Adjust the shadow properties as needed */,
 	},
 	mediaContainer: {
 		width: "100%",
