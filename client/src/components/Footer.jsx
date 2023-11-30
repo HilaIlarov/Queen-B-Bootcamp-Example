@@ -13,7 +13,6 @@ const Footer = () => {
                     <p key={index} className="author-item">{author}</p>
                 ))}
             </div>
-            <p className="footer-text">© {new Date().getFullYear()}</p>
         </footer>
     );
 };
