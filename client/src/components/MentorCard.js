@@ -21,8 +21,9 @@ function MentorCard(props) {
 					<img src={genericPerson} style={styles.personImg} />
 				</a>
 			</div>
-			<div>{name}</div>
-			<div>{languages.join(", ")}</div>
+			<div style={{ fontWeight: "bold" }}>{name}</div>
+			<br />
+			<div>{languages.sort().join(", ")}</div>
 		</div>
 	);
 }
@@ -39,8 +40,8 @@ const styles = {
 		// flexWrap: "wrap",
 		// alignContent: "center",
 		// alignItems: "center",
-		height: "210px",
-		width: "160px",
+		height: "220px",
+		width: "170px",
 		//margin: "20px",
 		alignSelf: "center",
 		// width: "30%", /* Adjust the width to leave some space for margins */
@@ -50,7 +51,9 @@ const styles = {
 		boxSizing: "border-box",
 		border:
 			"1px solid #ddd" /* Optional: Add a border for better visualization */,
-		padding: "10px",
+		paddingLeft: "20px",
+		paddingTop: "10px",
+		margin: "10px",
 		/* Add any other styles you want for your cards */
 	},
 
