@@ -1,6 +1,6 @@
 import React from "react";
 import firstPerson from "../images/person1.svg";
-import genericPerson from "../assets/genericProfilePictureEdited.jpg";
+import genericPerson from "../images/pic9.jpg";
 import { useHistory } from "react-router-dom";
 import WebFont from "webfontloader";
 

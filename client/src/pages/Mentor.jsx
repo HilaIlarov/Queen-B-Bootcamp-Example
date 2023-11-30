@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import { Card, CardContent, Typography } from "@mui/material";
-import genericPerson from "../assets/genericProfilePictureEdited.jpg";
+import genericPerson from "../images/pic9.jpg";
 import "./Mentor.css";
 
 const Mentor = () => {
