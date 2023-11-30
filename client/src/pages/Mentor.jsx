@@ -32,59 +32,71 @@ const Mentor = () => {
 	};
 
 	const openEmail = () => {
-		const subject = 'A message from QueenB member'; // Replace with the desired subject
-		const body = 'Hello, \n\nI hope this email finds you well :).'; // Replace with the desired body
-	
-		const mailtoLink = `mailto:${mentor.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+		const subject = "A message from QueenB member"; // Replace with the desired subject
+		const body = "Hello, \n\nI hope this email finds you well :)."; // Replace with the desired body
+
+		const mailtoLink = `mailto:${mentor.email}?subject=${encodeURIComponent(
+			subject
+		)}&body=${encodeURIComponent(body)}`;
 		window.location.href = mailtoLink;
 	};
 
 	return (
 		<div className="mentor-list-container">
 			<div className="card">
-      			<div className="photo-container">
-        			<img src={genericPerson} alt="Mentor" className="photo" />
- 	     		</div>
+				<div className="photo-container">
+					<img src={genericPerson} alt="Mentor" className="photo" />
+				</div>
 				<div className="text-container">
-        			<strong>{mentor.name}</strong><br />
+					<strong>{mentor.name}</strong>
+					<br />
 					<div className="kills-containe">
 						<div className="skill-item">
-							{mentor.languages?.join(", ")}<br />
+							{mentor.languages?.join(", ")}
+							<br />
 						</div>
-
 					</div>
 
-					<strong>about our queen {mentor.name}</strong><br />
-					{mentor.description}<br />
-					<strong>Contact information</strong><br />
-					<a 
-						href="#" onClick={openWhatsApp}>
-						<img
-							src="https://www.pngkit.com/png/detail/94-943684_this-is-the-logo-for-whatsapp-whatsapp-logo.png"								
-							alt="WhatsApp"
-							style={{ width: "40px", height: "40px" }} // Adjust the image size as needed
-						/>
-				  	</a>
+					<strong>about our queen {mentor.name}</strong>
+					<br />
+					{mentor.description}
+					<br />
+					<strong>Contact information</strong>
+					<br />
+					<div
+						style={{
+							display: "flex",
+							alignItems: "center",
+							justifyContent: "space-around",
+							width: "90%",
+							padding: "10px",
+						}}
+					>
+						<a href="#" onClick={openWhatsApp}>
+							<img
+								src="https://www.pngkit.com/png/detail/94-943684_this-is-the-logo-for-whatsapp-whatsapp-logo.png"
+								alt="WhatsApp"
+								style={{ width: "40px", height: "40px" }} // Adjust the image size as needed
+							/>
+						</a>
 
-					<a
-						href={mentor.linkedin}>
-						<img
-							src="https://www.pngkit.com/png/detail/8-85849_new-latest-linkedin-logo-linkedin-icon-png-black.png"
-							alt="Linkedin"
-							style={{ width: "40px", height: "40px" }}  // Adjust the image size as needed
-						/>
-					</a>
-					<a
-						href="#" onClick={openEmail}>
-						<img
-							src="https://www.pngkit.com/png/detail/9-95364_email-png-icons-jpg-royalty-free-stock-e.png"
-							alt="Email"
-							style={{ width: "40px", height: "40px" }}  // Adjust the image size as needed
-						/>
-					</a>
-				
-      			</div>
-    		</div>	
+						<a href={mentor.linkedin}>
+							<img
+								src="https://www.pngkit.com/png/detail/8-85849_new-latest-linkedin-logo-linkedin-icon-png-black.png"
+								alt="Linkedin"
+								style={{ width: "40px", height: "40px" }} // Adjust the image size as needed
+							/>
+						</a>
+						<a href="#" onClick={openEmail}>
+							<img
+								src="https://www.pngkit.com/png/detail/9-95364_email-png-icons-jpg-royalty-free-stock-e.png"
+								alt="Email"
+								style={{ width: "40px", height: "40px" }} // Adjust the image size as needed
+							/>
+						</a>
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 };
@@ -100,14 +112,12 @@ const useStyles = {
 		width: 435,
 		height: 800,
 		margin: 10,
-		borderRadius: "40px", /* Adjust the value as needed */
-  		overflow: "hidden", /* Optional: hides content overflow if any */
-		
+		borderRadius: "40px" /* Adjust the value as needed */,
+		overflow: "hidden" /* Optional: hides content overflow if any */,
 	},
 	main: {
 		fontWeight: "bold",
 		textAlign: "left",
-		fontFamily: "Chilanka", // Add the desired font family
 		fontSize: "14", // Add the desired font size
 	},
 	description: {
@@ -155,7 +165,7 @@ const styles = {
 		// display: "flex",
 		alignItems: "center", // Aligns content horizontally
 		justifyContent: "center", // Aligns content vertically
-        boxShadow:
+		boxShadow:
 			"0px 0px 8px 8px rgba(0, 0, 0, 0.3)" /* Adjust the shadow properties as needed */,
 	},
 	mediaContainer: {
@@ -176,4 +186,4 @@ const styles = {
 	},
 };
 
-export default Mentor;
+export default Mentor;
