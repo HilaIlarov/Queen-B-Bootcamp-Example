@@ -12,18 +12,20 @@ const Mentor = () => {
 	const mentorId = location.pathname.split("/")[1];
 
 	useEffect(() => {
-        const fetchData = async () => {
-           try {
-              const res = await axios.get(`http://localhost:5001/mentors/${mentorId}`);
-              console.log('Response from server:', res);
-              console.log('Mentor data:', res.data);  // Log the actual data
-              setMentor(res.data);
-           } catch (err) {
-              console.log('Error fetching data:', err);
-           }
-        };
-        fetchData();
-     }, [mentorId]);
+		const fetchData = async () => {
+			try {
+				const res = await axios.get(
+					`http://localhost:5001/mentors/${mentorId}`
+				);
+				console.log("Response from server:", res);
+				console.log("Mentor data:", res.data); // Log the actual data
+				setMentor(res.data);
+			} catch (err) {
+				console.log("Error fetching data:", err);
+			}
+		};
+		fetchData();
+	}, [mentorId]);
 
 	const openWhatsApp = () => {
 		window.open("https://wa.me/+972${mentor.phone}");
@@ -33,57 +35,99 @@ const Mentor = () => {
 		const subject = 'A message from QueenB member'; // Replace with the desired subject
 		const body = 'Hello, \n\nI hope this email finds you well :).'; // Replace with the desired body
 	
-		const mailtoLink = "mailto:${mentor.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}";
+		const mailtoLink = `mailto:${mentor.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 		window.location.href = mailtoLink;
-	  };
+	};
 
 	return (
-		<div className="mentor-list-container">
-			<div className="card">
-      			<div className="photo-container">
-        			<img src={genericPerson} alt="Mentor" className="photo" />
- 	     		</div>
-				<div className="text-container">
-        			<strong>{mentor.name}</strong><br />
-					<div className="kills-containe">
-						<div className="skill-item">
-							{mentor.languages?.join(", ")}<br />
-						</div>
-						
-					</div>
-					
-					<strong>about our queen {mentor.name}</strong><br />
-					{mentor.description}<br />
-					<strong>Contact information</strong><br />
-					<a 
-						href="#" onClick={openWhatsApp}>
-						<img
-							src="https://www.pngkit.com/png/detail/94-943684_this-is-the-logo-for-whatsapp-whatsapp-logo.png"								
-							alt="WhatsApp"
-							style={{ width: "40px", height: "40px" }} // Adjust the image size as needed
-						/>
-				  	</a>
+		<div style={useStyles.container}>
+			<Card sx={useStyles.root}>
+				<CardContent>
+					{<img src={genericPerson} style={styles.personImg} />}
+					<Typography
+						gutterBottom
+						variant="h5"
+						component="h2"
+						sx={useStyles.main}
+						style={{ fontSize: "17" }}
+					>
+						{mentor.name}
+					</Typography>
+					<Typography
+						gutterBottom
+						variant="h6"
+						component="h2"
+						style={{ textAlign: "left" }}
+					>
+						{mentor.languages?.join(", ")}
+					</Typography>
 
-					<a
-						href={mentor.linkedin}>
-						<img
-							src="https://www.pngkit.com/png/detail/8-85849_new-latest-linkedin-logo-linkedin-icon-png-black.png"
-							alt="Linkedin"
-							style={{ width: "40px", height: "40px" }}  // Adjust the image size as needed
-						/>
-					</a>
+					<Typography
+						gutterBottom
+						variant="h6"
+						component="h2"
+						sx={useStyles.main}
+					>
+						about our queen {mentor.name}
+					</Typography>
 
-					<a
-						href="#" onClick={openEmail}>
-						<img
-							src="https://www.pngkit.com/png/detail/9-95364_email-png-icons-jpg-royalty-free-stock-e.png"
-							alt="Email"
-							style={{ width: "40px", height: "40px" }}  // Adjust the image size as needed
-						/>
-					</a>
-				
-      			</div>
-    		</div>	
+					<Typography
+						variant="h6"
+						color="textSecondary"
+						component="h6"
+						sx={useStyles.description}
+						style={{ textAlign: "left" }}
+					>
+						{mentor.description}
+					</Typography>
+
+					<Typography
+						gutterBottom
+						variant="h6"
+						component="h2"
+						sx={useStyles.main}
+					>
+						contact {mentor.name}
+					</Typography>
+
+					<Typography
+						variant="body2"
+						color="textSecondary"
+						component="div"
+						sx={useStyles.media}
+					>
+						<a 
+							href="#" onClick={openWhatsApp}>
+        					<img
+								src="https://www.pngkit.com/png/full/1-13187_instagram-logo-new-vector-eps-free-download-logo.png"
+								alt="WhatsApp Icon"
+								style={{ width: "30px", height: "30px" }} // Adjust the image size as needed
+							/>
+      					</a>
+
+						<a
+							href={mentor.linkedin}>
+							<img
+								src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/640px-LinkedIn_logo_initials.png"
+								alt="Linkedin"
+								style={{ width: "30px", height: "30px" }} // Adjust the image size as needed
+							/>
+						</a>
+
+						<a
+							href="#" onClick={openEmail}>
+							<img
+								src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/640px-LinkedIn_logo_initials.png"
+								alt="email"
+								style={{ width: "30px", height: "30px" }} // Adjust the image size as needed
+							/>
+						</a>
+
+					</Typography>
+				</CardContent>
+				{/* <div className="content"> */}
+			</Card>
+			{/* </div> */}
 		</div>
 		
 	);
@@ -94,13 +138,11 @@ const useStyles = {
 		display: "flex",
 		justifyContent: "center",
 		alignItems: "center",
-		backgroundColor: "#fabebd",
-		//overflow: "hidden", 
-		//height: "90vh", 
+		height: "90vh",
 	},
 	root: {
-		width: 400,
-		height: 500,
+		width: 435,
+		height: 800,
 		margin: 10,
 		borderRadius: "40px", /* Adjust the value as needed */
   		overflow: "hidden", /* Optional: hides content overflow if any */
@@ -137,7 +179,7 @@ const useStyles = {
 
 const styles = {
 	container: {
-		backgroundColor: "white",
+		backgroundColor: "blue",
 		display: "flex",
 		flexDirection: "column",
 		position: "fixed",
@@ -157,6 +199,8 @@ const styles = {
 		// display: "flex",
 		alignItems: "center", // Aligns content horizontally
 		justifyContent: "center", // Aligns content vertically
+        boxShadow:
+			"0px 0px 8px 8px rgba(0, 0, 0, 0.3)" /* Adjust the shadow properties as needed */,
 	},
 	mediaContainer: {
 		width: "100%",

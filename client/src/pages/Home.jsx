@@ -13,7 +13,7 @@ import Mentor from "./Mentor";
 const port = process.env.PORT || 5001;
 
 const Home = () => {
-    const [flagForRender, setFlagToRender] = useState(true);
+	const [flagForRender, setFlagToRender] = useState(true);
 	const [message, setMessage] = useState("");
 	const [mentors, setMentors] = useState([]);
 	const [searchVal, setSearchVal] = useState("");
@@ -66,7 +66,7 @@ const Home = () => {
 		let filtered = [];
 		console.log("search vals: ", searchVal, selectedLanguage);
 		if (selectedLanguage) {
-            console.log(selectedLanguage);
+			console.log(selectedLanguage);
 			filtered = mentors.filter((mentor) =>
 				mentor.languages.includes(selectedLanguage.value)
 			);
@@ -74,8 +74,8 @@ const Home = () => {
 			filtered = mentors.filter((mentor) => mentor.name.includes(searchVal));
 		}
 		setFilteredMentors(filtered);
-        setSearchVal("");
-        clearSelection();
+		setSearchVal("");
+		clearSelection();
 	};
 
 	const handleSubmit = async (event) => {
@@ -105,56 +105,71 @@ const Home = () => {
 		setTimeout(fetchMentors, 500);
 	}, [flagForRender]);
 
-    return (
-        <div style={styles.container}>
-			<div style={{ ...styles.searchBox, ...styles.shadow }}>
-				<input
-					style={{ width: "187px" }}
-					id="newTask"
-					name="newTask"
-                    value={searchVal}
-					// form="newTaskForm"
-					type="text"
-					placeholder="Search mentor by name or role"
-					onChange={(event) => {
-						setSearchVal(event.target.value);
+	return (
+		<div style={styles.main}>
+			<div style={styles.container}>
+				<div
+					style={{
+						...styles.searchBox,
+						...styles.shadow,
+						position: "fixed",
 					}}
-				/>
-
-				<IoIosSearch
-					onClick={() => {
-						searchHandler(searchVal);
-					}}
-				/>
+				>
+					<input
+						style={{ width: "187px", height: "30px" }}
+						id="newTask"
+						name="newTask"
+						value={searchVal}
+						// form="newTaskForm"
+						type="text"
+						placeholder="Search mentor by name"
+						onChange={(event) => {
+							setSearchVal(event.target.value);
+						}}
+					/>
+					<div>
+						<Select
+							options={language_options}
+							isMulti={false}
+							onChange={handleSelectChange}
+							value={selectedLanguage}
+						/>
+					</div>
+					<IoIosSearch
+						onClick={() => {
+							searchHandler(searchVal);
+						}}
+					/>
+				</div>
+				<div>
+					<MentorsList filteredMentors={filteredMentors} />
+				</div>
+				{/* <img src={firstPerson} alt="person1" /> */}
 			</div>
-			<div>
-				<Select
-					options={language_options}
-					isMulti={false}
-					onChange={handleSelectChange}
-					value={selectedLanguage}
-				/>
-			</div>
-			<MentorsList filteredMentors={filteredMentors} />
-			{/* <img src={firstPerson} alt="person1" /> */}
 		</div>
-    );
+	);
 };
 
 const styles = {
-	container: {
-		overflow: "auto", /* This allows scrolling */
-		// overflowY: 'scroll',
+	main: {
+		position: "fixed",
+		height: "100%",
+		width: "100%",
 		backgroundColor: "#FABEBD",
+	},
+	container: {
+		overflow: "auto" /* This allows scrolling */,
+		// overflowY: 'scroll',
+		// backgroundColor: "blue",
 		//position: "fixed", // important for the background color to be over ALL the page
 		// center the div vertically
 		display: "flex",
 		flexDirection: "column",
 		alignItems: "center",
-		height: "100%",
+		height: "80%",
 		width: "100%",
 		fontFamily: "Chilanka",
-		margin: "0",
+		// margin: "0",
 	},
 	searchBox: {
 		// backgroundColor: "blue",
@@ -164,9 +179,9 @@ const styles = {
 		// flexWrap: "wrap",
 		alignContent: "center",
 		// alignContent: "space-around",
-		width: "220px",
-		height: "30px",
-		marginTop: "5%",
+		width: "400px",
+		height: "40px",
+		// marginTop: "1%",
 	},
 	shadow: {
 		boxShadow:

@@ -8,9 +8,7 @@ function MentorCard(props) {
 	const { id, name, languages } = mentor;
 	console.log("mentor name: ", name);
 	return (
-		<div
-			style={{ ...styles.container, ...styles.shadow }}
-		>
+		<div style={{ ...styles.container, ...styles.shadow }}>
 			<div>
 				<a className="link" href={`/${mentor.id}`}>
 					<img src={genericPerson} style={styles.personImg} />
@@ -26,26 +24,26 @@ const styles = {
 	container: {
 		backgroundColor: "white",
 		// center the div vertically
-		//display: "flex",
+		display: "flex",
 		//flexDirection: "column",
 		//alignItems: "center",
-		//justifyContent: "center",
+		justifyContent: "center",
 		// flexWrap: "wrap",
 		// alignContent: "center",
 		// alignItems: "center",
-		//height: "170px",
-		//width: "140px",
+		height: "210px",
+		width: "160px",
 		//margin: "20px",
-
-		width: "30%", /* Adjust the width to leave some space for margins */
-  		margin: "1%", /* Adjust the margin to create spacing between cards */
-  		display: "inline-block",
-  		verticalAlign: "top",
-  		boxSizing: "border-box",
-  		border: "1px solid #ddd", /* Optional: Add a border for better visualization */
-  		padding: "10px",
-  /* Add any other styles you want for your cards */
-
+		alignSelf: "center",
+		// width: "30%", /* Adjust the width to leave some space for margins */
+		// margin: "1%" /* Adjust the margin to create spacing between cards */,
+		display: "inline-block",
+		verticalAlign: "top",
+		boxSizing: "border-box",
+		border:
+			"1px solid #ddd" /* Optional: Add a border for better visualization */,
+		padding: "10px",
+		/* Add any other styles you want for your cards */
 	},
 
 	personImg: {
