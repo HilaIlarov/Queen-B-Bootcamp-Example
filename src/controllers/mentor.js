@@ -2,6 +2,7 @@ const { pool } = require("../db");
 const queries = require("../queries");
 
 const getAllMentors = (req, res) => {
+    console.log("get ALL mentor");
     pool.query(queries.getMentors, (error,results)=>{
         if (error) throw error;
         res.status(200).json(results.rows);

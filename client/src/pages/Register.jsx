@@ -25,13 +25,8 @@ const Register = () => {
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 
-		console.log("Input change:", e.target.name, e.target.value);
-
-		console.log("languages: ", selectedLanguages);
 		if (name === "languages") {
 			// Convert comma-separated string to an array
-			// const languagesArray = value.split(",").map((skill) => skill.trim());
-			console.log("inside inputs, languages is: ", selectedLanguages);
 			setInputs((prev) => ({ ...prev, [name]: selectedLanguages }));
 		} else {
 			// For other fields, update as usual
@@ -40,21 +35,16 @@ const Register = () => {
 	};
 	const handleSelectChange = (selectedOption) => {
 		setSelectedLanguages(selectedOption.map((obj) => obj.value));
-		console.log(
-			"selectedOption: ",
-			selectedOption.map((obj) => obj.value)
-		);
+
 		setInputs((prev) => ({
 			...prev,
 			languages: selectedOption.map((obj) => obj.value),
 		}));
-		console.log("input languages: ", inputs.languages);
 	};
 	const handleSubmit = async (e) => {
 		/* we don't want to refresh our page */
 		e.preventDefault();
 		try {
-			console.log("Submitting:", inputs);
 			// Check if all required fields are filled
             for (const field of ["name", "email", "password", "languages", "description", "phone", "linkedin"]) {
                 if (!inputs[field]) {
