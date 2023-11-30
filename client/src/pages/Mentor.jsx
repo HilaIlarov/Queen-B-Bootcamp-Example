@@ -57,11 +57,12 @@ const Mentor = () => {
 						</div>
 					</div>
 
+					<br />
 					<strong>about our queen {mentor.name}</strong>
-					<br />
+                    <br />
 					{mentor.description}
-					<br />
-					<strong>Contact information</strong>
+					<br /> 
+					{/* <strong>Contact information</strong> */}
 					<br />
 					<div
 						style={{
