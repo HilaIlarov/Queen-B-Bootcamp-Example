@@ -3,6 +3,7 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 import { Card, CardContent, Typography } from "@mui/material";
 import genericPerson from "../assets/genericProfilePictureEdited.jpg";
+import "./Mentor.css";
 
 const Mentor = () => {
 	const [mentor, setMentor] = useState({});
@@ -31,100 +32,59 @@ const Mentor = () => {
 	};
 
 	const openEmail = () => {
-		const subject = "A message from QueenB member"; // Replace with the desired subject
-		const body = "Hello, \n\nI hope this email finds you well :)."; // Replace with the desired body
-
-		const mailtoLink = `mailto:${mentor.email}?subject=${encodeURIComponent(
-			subject
-		)}&body=${encodeURIComponent(body)}`;
+		const subject = 'A message from QueenB member'; // Replace with the desired subject
+		const body = 'Hello, \n\nI hope this email finds you well :).'; // Replace with the desired body
+	
+		const mailtoLink = `mailto:${mentor.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 		window.location.href = mailtoLink;
 	};
 
 	return (
-		<div style={useStyles.container}>
-			<Card sx={useStyles.root}>
-				<CardContent>
-					{<img src={genericPerson} style={styles.personImg} />}
-					<Typography
-						gutterBottom
-						variant="h5"
-						component="h2"
-						sx={useStyles.main}
-						style={{ fontSize: "17" }}
-					>
-						{mentor.name}
-					</Typography>
-					<Typography
-						gutterBottom
-						variant="h6"
-						component="h2"
-						style={{ textAlign: "left" }}
-					>
-						{mentor.languages?.join(", ")}
-					</Typography>
+		<div className="mentor-list-container">
+			<div className="card">
+      			<div className="photo-container">
+        			<img src={genericPerson} alt="Mentor" className="photo" />
+ 	     		</div>
+				<div className="text-container">
+        			<strong>{mentor.name}</strong><br />
+					<div className="kills-containe">
+						<div className="skill-item">
+							{mentor.languages?.join(", ")}<br />
+						</div>
 
-					<Typography
-						gutterBottom
-						variant="h6"
-						component="h2"
-						sx={useStyles.main}
-					>
-						about our queen {mentor.name}
-					</Typography>
+					</div>
 
-					<Typography
-						variant="h6"
-						color="textSecondary"
-						component="h6"
-						sx={useStyles.description}
-						style={{ textAlign: "left" }}
-					>
-						{mentor.description}
-					</Typography>
+					<strong>about our queen {mentor.name}</strong><br />
+					{mentor.description}<br />
+					<strong>Contact information</strong><br />
+					<a 
+						href="#" onClick={openWhatsApp}>
+						<img
+							src="https://www.pngkit.com/png/detail/94-943684_this-is-the-logo-for-whatsapp-whatsapp-logo.png"								
+							alt="WhatsApp"
+							style={{ width: "40px", height: "40px" }} // Adjust the image size as needed
+						/>
+				  	</a>
 
-					<Typography
-						gutterBottom
-						variant="h6"
-						component="h2"
-						sx={useStyles.main}
-					>
-						contact {mentor.name}
-					</Typography>
-
-					<Typography
-						variant="body2"
-						color="textSecondary"
-						component="div"
-						sx={useStyles.media}
-					>
-						<a href="#" onClick={openWhatsApp}>
-							<img
-								src="https://www.pngkit.com/png/full/1-13187_instagram-logo-new-vector-eps-free-download-logo.png"
-								alt="WhatsApp Icon"
-								style={{ width: "30px", height: "30px" }} // Adjust the image size as needed
-							/>
-						</a>
-
-						<a href={mentor.linkedin}>
-							<img
-								src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/640px-LinkedIn_logo_initials.png"
-								alt="Linkedin"
-								style={{ width: "30px", height: "30px" }} // Adjust the image size as needed
-							/>
-						</a>
-
-						<a href="#" onClick={openEmail}>
-							<img
-								src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/640px-LinkedIn_logo_initials.png"
-								alt="email"
-								style={{ width: "30px", height: "30px" }} // Adjust the image size as needed
-							/>
-						</a>
-					</Typography>
-				</CardContent>
-				{/* <div className="content"> */}
-			</Card>
-			{/* </div> */}
+					<a
+						href={mentor.linkedin}>
+						<img
+							src="https://www.pngkit.com/png/detail/8-85849_new-latest-linkedin-logo-linkedin-icon-png-black.png"
+							alt="Linkedin"
+							style={{ width: "40px", height: "40px" }}  // Adjust the image size as needed
+						/>
+					</a>
+					<a
+						href="#" onClick={openEmail}>
+						<img
+							src="https://www.pngkit.com/png/detail/9-95364_email-png-icons-jpg-royalty-free-stock-e.png"
+							alt="Email"
+							style={{ width: "40px", height: "40px" }}  // Adjust the image size as needed
+						/>
+					</a>
+				
+      			</div>
+    		</div>	
 		</div>
 	);
 };
@@ -134,32 +94,29 @@ const useStyles = {
 		display: "flex",
 		justifyContent: "center",
 		alignItems: "center",
-		width: "100%",
-		// maxWidth: "800px", // Adjust the maximum width as needed
-		margin: "0 auto", // Center the container
-		// height: "90%",
-		backgroundColor: "#fabebd",
+		height: "90vh",
 	},
 	root: {
-		// width: 435,
-		// height: 800,
-		width: "60%",
-		height: "60%",
+		width: 435,
+		height: 800,
 		margin: 10,
+		borderRadius: "40px", /* Adjust the value as needed */
+  		overflow: "hidden", /* Optional: hides content overflow if any */
+		
 	},
 	main: {
 		fontWeight: "bold",
 		textAlign: "left",
-		fontFamily: "Raleway", // Add the desired font family
+		fontFamily: "Chilanka", // Add the desired font family
 		fontSize: "14", // Add the desired font size
 	},
 	description: {
-		height: 100, // Fixed height for the description
+		height: 50, // Fixed height for the description
 		overflowY: "scroll",
 		textOverflow: "ellipsis",
 		margin: 5,
 		WebkitLineClamp: 5, // Maximum lines to display
-		fontFamily: "Raleway", // Add the desired font family
+		fontFamily: "Chilanka", // Add the desired font family
 		fontSize: "12", // Add the desired font size
 	},
 	media: {
@@ -219,4 +176,4 @@ const styles = {
 	},
 };
 
-export default Mentor;
+export default Mentor;
