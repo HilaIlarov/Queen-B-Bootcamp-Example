@@ -1,60 +1,61 @@
-
 /* Mentor List Container Styles */
 .mentor-list-container {
-    background-color:  #FABEBD;
-    width: 100%;
-    margin: auto;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-  }
-  
-  /* Mentor Card Styles */
-  .card {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 250px;
-    margin: 20px;
-    box-sizing: border-box;
-    transition: transform 0.3s ease;
-    color: rgb(80, 65, 81); 
-  }
-  
-  .card:hover {
-    transform: scale(1.05);
-  }
-  
-  .photo-container {
-    background-color: #f8e0e0;
-    border-radius: 10px;
-    width: 100%;
-    text-align: center;
-  }
-  
-  .photo {
-    width: 80%;
-    height: auto;
-    border-radius: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .text-container {
-    margin-top: 15px;
-    font-family: Chilanka;
-  }
-  
-  .skills-container {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 15px;
-  }
-  
-  .skill-item {
-    background-color: #f2f2f2;
-    padding: 8px 15px;
-    border-radius: 10px;
-    margin: 5px;
-    display: inline-block;
-  }
+	background-color: #fabebd;
+	width: 100%;
+	margin: auto;
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
+/* Mentor Card Styles */
+.card {
+	background-color: #ffffff;
+	padding: 30px;
+	border-radius: 20px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	width: 300px;
+	height: 480px;
+	/* justify-content: space-evenly; */
+	/* margin: 10px; */
+	box-sizing: border-box;
+	transition: transform 0.3s ease;
+	color: rgb(80, 65, 81);
+}
+
+.card:hover {
+	transform: scale(1.05);
+}
+
+.photo-container {
+	background-color: #f8e0e0;
+	border-radius: 10px;
+	width: 100%;
+	text-align: center;
+}
+
+.photo {
+	width: 80%;
+	height: auto;
+	border-radius: 10px;
+	margin-bottom: 10px;
+}
+
+.text-container {
+	margin-top: 15px;
+	font-family: Chilanka;
+}
+
+.skills-container {
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 15px;
+}
+
+.skill-item {
+	background-color: #f2f2f2;
+	padding: 8px 15px;
+	border-radius: 10px;
+	margin: 5px;
+	display: inline-block;
+}
