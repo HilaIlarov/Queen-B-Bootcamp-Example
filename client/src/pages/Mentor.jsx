@@ -58,7 +58,7 @@ const Mentor = () => {
 					</div>
 
 					<br />
-					<strong>about our queen {mentor.name}</strong>
+					<strong>About our queen, {mentor.name}:</strong>
                     <br />
 					{mentor.description}
 					<br /> 
