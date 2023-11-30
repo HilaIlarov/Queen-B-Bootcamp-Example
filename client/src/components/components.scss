@@ -2,6 +2,8 @@ $lightPurple: #fabebd;
 
 .navbar {
     background-color: #FABEBD;
+	font-weight: bold;
+	font-family: Chilanka;
     .container {
       padding: 10px 0px;
       display: flex;
@@ -19,7 +21,8 @@ $lightPurple: #fabebd;
 
 			h6 {
 				font-size: 16px;
-				font-weight: 300;
+				//font-weight: 300;
+				
 			}
 
 			span {
@@ -30,13 +33,6 @@ $lightPurple: #fabebd;
 }
 
 footer {
-	margin-top: 100px;
-	padding: 20px;
-	background-color: $lightPurple;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	font-size: 12px;
 
 	img {
 		height: 70px;
