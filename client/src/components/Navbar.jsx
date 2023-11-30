@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Logo from "../images/QueenB.png";
 import {Link} from "react-router-dom";
 import { AuthContext } from "../context/authContext";
-import "./components.scss";
+import "./Navbar.css"
 
 
 const Navbar = () => {
