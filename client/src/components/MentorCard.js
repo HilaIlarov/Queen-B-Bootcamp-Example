@@ -67,4 +67,4 @@ const styles = {
 	},
 };
 
-export default MentorCard;
+export default MentorCard;
